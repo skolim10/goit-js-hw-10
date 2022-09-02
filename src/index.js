@@ -49,7 +49,7 @@ const countrySearch = e => {
 const renderCountryList = country => {
   const markup = country
     .map(({ name, flags }) => {
-      return `<li><img src="${flags.svg}" alt="${name.official}"><p>${name.official}</p></li>`;
+      return `<li><img src="${flags.svg}" alt="${name.official}" width="100" height="60"><p>${name.official}</p></li>`;
     })
     .join('');
   countryList.innerHTML = markup;
