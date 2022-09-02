@@ -8,6 +8,7 @@ const DEBOUNCE_DELAY = 300;
 const input = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
+const body = document.querySelector('body');
 
 //=====FUNCTIONS=====
 
@@ -48,7 +49,7 @@ const countrySearch = e => {
 const renderCountryList = country => {
   const markup = country
     .map(({ name, flags }) => {
-      return `<li><img src="${flags.svg}" alt="${name.official}" width="100" height="60"><p>${name.official}</p></li>`;
+      return `<li><img src="${flags.svg}" alt="${name.official}"><p>${name.official}</p></li>`;
     })
     .join('');
   countryList.innerHTML = markup;
@@ -57,9 +58,9 @@ const renderCountryList = country => {
 const renderCountryInfo = country => {
   const markup = country
     .map(({ name, capital, population, flags, languages }) => {
-      return `<section><h1><img src="${flags.svg}" alt="${
+      return `<section><h1><img src="${flags.svg}" alt="Flag of ${
         name.official
-      }" width="100" height="60">&nbsp ${name.official}</h1>
+      }"width="30" hight="20"">&nbsp ${name.official}</h1>
       <p><span>Capital: </span>&nbsp ${capital}</p>
       <p><span>Population:</span>&nbsp ${population}</p>
       <p><span>Languages:</span>&nbsp ${Object.values(languages)}</p><section>`;
@@ -69,3 +70,14 @@ const renderCountryInfo = country => {
 };
 
 input.addEventListener('input', debounce(countrySearch, DEBOUNCE_DELAY));
+
+body.style.paddingTop = '66px';
+body.style.paddingLeft = '70px';
+body.style.backgroundColor = '#c7f0c8';
+
+input.style.width = '300px';
+input.style.fontWeight = '500';
+
+countryList.style.listStyle = 'none';
+countryList.style.margin = 'auto';
+countryList.style.padding = '15px';
